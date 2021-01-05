@@ -1,0 +1,70 @@
+﻿@model HMS.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pesel" class="control-label"></label>
+                <input asp-for="Pesel" class="form-control" minlength="11" maxlength="11" />
+                <span asp-validation-for="Pesel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Position" class="control-label"></label>
+                <select id="employeePosition" asp-for="Position" class="form-control">
+                    <option value="">--Select position--</option>
+                    <option value="Doctor">Doctor</option>
+                    <option value="Nurse">Nurse</option>
+                </select>
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+            <div id="specFields" class="hidden">
+                <div class="form-group">
+                    <label asp-for="Specialization" class="control-label"></label>
+                    <select id="specialization" asp-for="Specialization" class="form-control">
+                        <option value="">--Select specialization--</option>
+                        <option value="Cardiologist">Cardiologist</option>
+                        <option value="Laryngologist">Laryngologist</option>
+                        <option value="Neurologist">Neurologist</option>
+                        <option value="Urologist">Urologist</option>
+                    </select>
+                    <span asp-validation-for="Specialization" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PwzNumber" class="control-label"></label>
+                    <input id="pwzNumber" asp-for="PwzNumber" class="form-control" />
+                    <span asp-validation-for="PwzNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/toggleSpecFields.js"></script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<HMS.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Employee Register</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-outline-success"><i class="fas fa-user-plus"></i></a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-dark"><i class="fas fa-info-circle"></i></a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger"><i class="fas fa-user-minus"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HMS.Models.ViewModel.DutyEmployeeViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Duties</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success">Add duty</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Employee
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duty.DutyDate)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duty.DutyDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Duty.Id" class="btn btn-outline-primary">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Duty.Id" class="btn btn-outline-dark">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Duty.Id" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
